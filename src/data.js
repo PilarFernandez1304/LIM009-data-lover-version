@@ -25,16 +25,15 @@ for (let i = 0; i <POKEMON.pokemon.length ; i++) {
 }
 
 //Obteniendo Data
- function ObtenerData(){
-   const Data=POKEMON.pokemon;
-   return Data;
- }
 
- // DOMContentLoader
- const Datos=ObtenerData();
- addEventListener('DOMContentLoaded',()=>{
-    MostrarDatos(Datos);
- })
+   const Data=POKEMON.pokemon;
+   
+
+//  // DOMContentLoader
+//  const Datos=ObtenerData();
+//  addEventListener('DOMContentLoaded',()=>{
+//     MostrarDatos(Datos);
+//  })
 
  //Mostrar Resultado de Filtrado
  function MostrarDatos(Datos){
@@ -50,6 +49,16 @@ for (let i = 0; i <POKEMON.pokemon.length ; i++) {
 }
 
 
+const filterData = (Data,condition) =>{
+  listaFiltrada = Data.filter((element)=>{
+    for(let i = 0 ; i < element.type.length ; i++){
+      if (element.type[i] === condition) {
+        return 1;
+      }
+    }
+  });
+  return listaFiltrada;
+}
 
 // const FiltrarTipo =() =>{
   
@@ -61,3 +70,7 @@ for (let i = 0; i <POKEMON.pokemon.length ; i++) {
 
 // console.log(FiltrarTipo());
 
+window.pokemon={
+  filterData:filterData,
+  Data:Data
+}

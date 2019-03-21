@@ -9,6 +9,7 @@ const example = () => {
 
 window.example = example;
 //window.viewPokemones=viewPokemones;
+//Mostrar Data
 const viewPokemones = () =>{
 for (let i = 0; i <POKEMON.pokemon.length ; i++) {
   const con=document.getElementById('root').innerHTML+=
@@ -23,15 +24,40 @@ for (let i = 0; i <POKEMON.pokemon.length ; i++) {
   }
 }
 
-//Mostrar
+//Obteniendo Data
+ function ObtenerData(){
+   const Data=POKEMON.pokemon;
+   return Data;
+ }
 
-const FiltrarTipo =() =>{
-  
-  const resultFiltrado = POKEMON.pokemon.filter(FiltrarTipo=>
-  FiltrarTipo.type=='Grass' || FiltrarTipo.type=='Poison' || FiltrarTipo.type == 'Normal'
-  || FiltrarTipo.type=='Flying')
-  return resultFiltrado;
+ // DOMContentLoader
+ const Datos=ObtenerData();
+ addEventListener('DOMContentLoaded',()=>{
+    MostrarDatos(Datos);
+ })
+
+ //Mostrar Resultado de Filtrado
+ function MostrarDatos(Datos){
+  const contenedor= document.getElementById('FilterType');
+   Datos.forEach(Pokemon=> {
+     const PokemonHTML=document.createElement('p');
+     PokemonHTML.innerHTML=`
+     <p> ${Pokemon.name}</p>
+     `
+     
+   });
+
 }
 
-console.log(FiltrarTipo());
+
+
+// const FiltrarTipo =() =>{
+  
+//   const resultFiltrado = POKEMON.pokemon.filter(FiltrarTipo=>
+//   FiltrarTipo.type=='Grass' || FiltrarTipo.type=='Poison' || FiltrarTipo.type == 'Normal'
+//   || FiltrarTipo.type=='Flying')
+//   return resultFiltrado;
+// }
+
+// console.log(FiltrarTipo());
 
